@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dc3l32ch725nf"]
+
+[ext_resource type="Script" uid="uid://84ot6bvue0e8" path="res://ollama.gd" id="1_wtcfe"]
+
+[node name="Ollama" type="Node2D" unique_id=1626926223]
+script = ExtResource("1_wtcfe")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1608981915]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=154647603]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=1500784280]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=503118670]
+layout_mode = 2
+text = "Scenario"
+
+[node name="TextEditScenario" type="TextEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=135708791]
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+text = "Medievel times"
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=764870021]
+layout_mode = 2
+text = "Location"
+
+[node name="TextEditLocation" type="TextEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=15533831]
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+text = "Lisbon"
+
+[node name="TextEditOutput" type="TextEdit" parent="HBoxContainer/VBoxContainer" unique_id=1532555540]
+custom_minimum_size = Vector2(900, 500)
+layout_mode = 2
+editable = false
+wrap_mode = 1
+indent_wrapped_lines = true
+
+[node name="Button" type="Button" parent="HBoxContainer" unique_id=1272189200]
+layout_mode = 2
+text = "Send"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1659137244]
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
